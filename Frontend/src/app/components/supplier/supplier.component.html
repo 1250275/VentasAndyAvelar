@@ -1,0 +1,38 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a href="/" class="navbar-brand">REGISTRO DE PROVEEDORES</a>
+</nav>
+
+<div class="container">
+  <div class="row mt-4">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>NO</th>
+          <th>EMPRESA</th>
+          <th>PROVEEDOR</th>
+          <th>DIRECCION</th>
+          <th>TELEFONO</th>
+          <th>RESPONSABLE</th>
+          <th>FECHA CREACION</th>
+          <th>OBSERVACIONES</th>
+          <th>ESTADO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let supplier of suppliers">
+          <td>{{supplier.idprov}}</td>
+          <td>{{supplier.idempresa}}</td>
+          <td>{{supplier.proveedor}}</td>
+          <td>{{supplier.direccion}}</td>
+          <td>{{supplier.telefono}}</td>
+          <td>{{supplier.responsable}}</td>
+          <td>{{supplier.fecha_creacion}}</td>
+          <td>{{supplier.observaciones}}</td>
+          <td>{{supplier.estado}}</td>
+          <td><button class="btn btn-danger">Eliminar</button></td>
+          <td><button class="btn btn-success">Actualizar</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

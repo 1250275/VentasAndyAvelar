@@ -1,0 +1,44 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a href="/" class="navbar-brand">REGISTRO DE CLIENTES</a>
+</nav>
+
+<div class="container">
+  <div class="row mt-4">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>NO</th>
+          <th>EMPRESA</th>
+          <th>SUCURSAL</th>
+          <th>IDENTIDAD</th>
+          <th>RTN</th>
+          <th>FECHA NACIMIENTO</th>
+          <th>NOMBRE</th>
+          <th>TELEFONO</th>
+          <th>DIRECCION</th>
+          <th>CORREO</th>
+          <th>FECHA CREACION</th>
+          <th>ESTADO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let customer of customers">
+          <td>{{customer.num_clie}}</td>
+          <td>{{customer.idempresa}}</td>
+          <td>{{customer.idsuc}}</td>
+          <td>{{customer.identidad}}</td>
+          <td>{{customer.rtn}}</td>
+          <td>{{customer.fecha_nac}}</td>
+          <td>{{customer.nombre}}</td>
+          <td>{{customer.telefono}}</td>
+          <td>{{customer.direccion}}</td>
+          <td>{{customer.correo}}</td>
+          <td>{{customer.fecha_creacion}}</td>
+          <td>{{customer.estado}}</td>
+          <td><button class="btn btn-danger">Eliminar</button></td>
+          <td><button class="btn btn-success">Actualizar</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

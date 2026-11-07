@@ -1,0 +1,52 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a href="/" class="navbar-brand">REGISTRO DE CUENTAS POR PAGAR</a>
+</nav>
+
+<div class="container">
+  <div class="row mt-4">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>NO</th>
+          <th>COMPRA</th>
+          <th>EMPRESA</th>
+          <th>SUCURSAL</th>
+          <th>PROVEEDOR</th>
+          <th>USUARIO</th>
+          <th>FORMA PAGO</th>
+          <th>FECHA COMPRA</th>
+          <th>PRODUCTO</th>
+          <th>CANTIDAD</th>
+          <th>PRECIO</th>
+          <th>SUBTOTAL</th>
+          <th>ISV</th>
+          <th>TOTAL</th>
+          <th>FECHA PAGO</th>
+          <th>ESTADO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let accountPayable of accountsPayable">
+          <td>{{accountPayable.idcxp}}</td>
+          <td>{{accountPayable.num_compra}}</td>
+          <td>{{accountPayable.idempresa}}</td>
+          <td>{{accountPayable.idsuc}}</td>
+          <td>{{accountPayable.idprov}}</td>
+          <td>{{accountPayable.userid}}</td>
+          <td>{{accountPayable.idfpago}}</td>
+          <td>{{accountPayable.fecha_compra}}</td>
+          <td>{{accountPayable.num_prod}}</td>
+          <td>{{accountPayable.cantidad}}</td>
+          <td>{{accountPayable.precio}}</td>
+          <td>{{accountPayable.subtotal}}</td>
+          <td>{{accountPayable.isv}}</td>
+          <td>{{accountPayable.total}}</td>
+          <td>{{accountPayable.fecha_pago}}</td>
+          <td>{{accountPayable.estado}}</td>
+          <td><button class="btn btn-danger">Eliminar</button></td>
+          <td><button class="btn btn-success">Actualizar</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

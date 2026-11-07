@@ -1,0 +1,46 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a href="/" class="navbar-brand">REGISTRO DE EMPLEADOS</a>
+</nav>
+
+<div class="container">
+  <div class="row mt-4">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>NO</th>
+          <th>EMPRESA</th>
+          <th>SUCURSAL</th>
+          <th>AREA</th>
+          <th>IDENTIDAD</th>
+          <th>FECHA NACIMIENTO</th>
+          <th>NOMBRES</th>
+          <th>APELLIDOS</th>
+          <th>SEXO</th>
+          <th>ESTADO CIVIL</th>
+          <th>DIRECCION</th>
+          <th>FECHA CREACION</th>
+          <th>ESTADO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employees">
+          <td>{{employee.idemp}}</td>
+          <td>{{employee.idempresa}}</td>
+          <td>{{employee.idsuc}}</td>
+          <td>{{employee.idarea}}</td>
+          <td>{{employee.identidad}}</td>
+          <td>{{employee.fecha_nac}}</td>
+          <td>{{employee.nombres}}</td>
+          <td>{{employee.apellidos}}</td>
+          <td>{{employee.sexo}}</td>
+          <td>{{employee.estado_civil}}</td>
+          <td>{{employee.direccion}}</td>
+          <td>{{employee.fecha_creacion}}</td>
+          <td>{{employee.estado}}</td>
+          <td><button class="btn btn-danger">Eliminar</button></td>
+          <td><button class="btn btn-success">Actualizar</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

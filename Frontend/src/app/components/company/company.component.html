@@ -1,0 +1,38 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a href="/" class="navbar-brand">REGISTRO DE EMPRESAS</a>
+</nav>
+
+<div class="container">
+  <div class="row mt-4">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>NO</th>
+          <th>EMPRESA</th>
+          <th>DIRECCION</th>
+          <th>RTN</th>
+          <th>TELEFONO</th>
+          <th>CORREO</th>
+          <th>CONTACTO</th>
+          <th>FECHA CREACION</th>
+          <th>ESTADO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let company of companies">
+          <td>{{company.idempresa}}</td>
+          <td>{{company.nombre}}</td>
+          <td>{{company.direccion}}</td>
+          <td>{{company.rtn}}</td>
+          <td>{{company.telefono}}</td>
+          <td>{{company.correo}}</td>
+          <td>{{company.contacto}}</td>
+          <td>{{company.fecha_creacion}}</td>
+          <td>{{company.estado}}</td>
+          <td><button class="btn btn-danger">Eliminar</button></td>
+          <td><button class="btn btn-success">Actualizar</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

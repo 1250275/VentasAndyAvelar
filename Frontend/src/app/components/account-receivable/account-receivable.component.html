@@ -1,0 +1,52 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a href="/" class="navbar-brand">REGISTRO DE CUENTAS POR COBRAR</a>
+</nav>
+
+<div class="container">
+  <div class="row mt-4">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>NO</th>
+          <th>EMPRESA</th>
+          <th>VENTA</th>
+          <th>SUCURSAL</th>
+          <th>CLIENTE</th>
+          <th>USUARIO</th>
+          <th>FORMA PAGO</th>
+          <th>FECHA VENTA</th>
+          <th>PRODUCTO</th>
+          <th>CANTIDAD</th>
+          <th>PRECIO</th>
+          <th>ISV</th>
+          <th>DESCUENTO</th>
+          <th>TOTAL</th>
+          <th>FECHA PAGO</th>
+          <th>ESTADO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let accountReceivable of accountsReceivable">
+          <td>{{accountReceivable.idcxc}}</td>
+          <td>{{accountReceivable.idempresa}}</td>
+          <td>{{accountReceivable.num_venta}}</td>
+          <td>{{accountReceivable.idsuc}}</td>
+          <td>{{accountReceivable.num_clie}}</td>
+          <td>{{accountReceivable.userid}}</td>
+          <td>{{accountReceivable.idfpago}}</td>
+          <td>{{accountReceivable.fecha_venta}}</td>
+          <td>{{accountReceivable.num_prod}}</td>
+          <td>{{accountReceivable.cantidad}}</td>
+          <td>{{accountReceivable.precio}}</td>
+          <td>{{accountReceivable.isv}}</td>
+          <td>{{accountReceivable.descuento}}</td>
+          <td>{{accountReceivable.total}}</td>
+          <td>{{accountReceivable.fecha_pago}}</td>
+          <td>{{accountReceivable.estado}}</td>
+          <td><button class="btn btn-danger">Eliminar</button></td>
+          <td><button class="btn btn-success">Actualizar</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

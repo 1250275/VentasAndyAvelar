@@ -67,24 +67,24 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
 // enlazar cada ruta con su tabla
-app.use('/companies', companyRoutes);
-app.use('/branches', branchRoutes);
-app.use('/suppliers', supplierRoutes);
-app.use('/work-areas', workAreaRoutes);
-app.use('/employees', employeeRoutes);
-app.use('/user-types', userTypeRoutes);
-app.use('/users', userRoutes);
-app.use('/customers', customerRoutes);
-app.use('/product-types', productTypeRoutes);
-app.use('/products', productRoutes);
-app.use('/payment-methods', paymentMethodRoutes);
-app.use('/purchase-headers', purchaseHeaderRoutes);
-app.use('/purchase-details', purchaseDetailRoutes);
-app.use('/sale-headers', saleHeaderRoutes);
-app.use('/sale-details', saleDetailRoutes);
-app.use('/accounts-receivable', accountReceivableRoutes);
-app.use('/accounts-payable', accountPayableRoutes);
-app.use('/payments', paymentRoutes);
+app.use('/api/companies', companyRoutes);
+app.use('/api/branches', branchRoutes);
+app.use('/api/suppliers', supplierRoutes);
+app.use('/api/work-areas', workAreaRoutes);
+app.use('/api/employees', employeeRoutes);
+app.use('/api/user-types', userTypeRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/customers', customerRoutes);
+app.use('/api/product-types', productTypeRoutes);
+app.use('/api/products', productRoutes);
+app.use('/api/payment-methods', paymentMethodRoutes);
+app.use('/api/purchase-headers', purchaseHeaderRoutes);
+app.use('/api/purchase-details', purchaseDetailRoutes);
+app.use('/api/sale-headers', saleHeaderRoutes);
+app.use('/api/sale-details', saleDetailRoutes);
+app.use('/api/accounts-receivable', accountReceivableRoutes);
+app.use('/api/accounts-payable', accountPayableRoutes);
+app.use('/api/payments', paymentRoutes);
 
 // iniciar el servidor
 app.listen(app.get('port'), () => {

@@ -1,0 +1,46 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a href="/" class="navbar-brand">REGISTRO DE PRODUCTOS</a>
+</nav>
+
+<div class="container">
+  <div class="row mt-4">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>NO</th>
+          <th>EMPRESA</th>
+          <th>SUCURSAL</th>
+          <th>TIPO PRODUCTO</th>
+          <th>DESCRIPCION</th>
+          <th>PRESENTACION</th>
+          <th>MARCA</th>
+          <th>VALOR</th>
+          <th>PRECIO VENTA</th>
+          <th>EXISTENCIA</th>
+          <th>FECHA INGRESO</th>
+          <th>FECHA ACTUALIZA</th>
+          <th>ESTADO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products">
+          <td>{{product.num_prod}}</td>
+          <td>{{product.idempresa}}</td>
+          <td>{{product.idsuc}}</td>
+          <td>{{product.idtpprod}}</td>
+          <td>{{product.descripcion}}</td>
+          <td>{{product.presentacion}}</td>
+          <td>{{product.marca}}</td>
+          <td>{{product.valor}}</td>
+          <td>{{product.precioventa}}</td>
+          <td>{{product.existencia}}</td>
+          <td>{{product.fecha_ingreso}}</td>
+          <td>{{product.fecha_actualiza}}</td>
+          <td>{{product.estado}}</td>
+          <td><button class="btn btn-danger">Eliminar</button></td>
+          <td><button class="btn btn-success">Actualizar</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
