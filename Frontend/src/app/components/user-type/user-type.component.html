@@ -2,27 +2,50 @@
   <a href="/" class="navbar-brand">REGISTRO DE TIPOS DE USUARIO</a>
 </nav>
 
-<div class="container">
-  <div class="row mt-4">
-    <table class="table table-bordered table-hover">
-      <thead>
-        <tr>
+<div class="card mt-4">
+  <div class="card-body">
+  <form #f="ngForm" (ngSubmit)="addUserType()" novalidate>
+    <div class="row">
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Empresa (id) *</label>
+        <input type="number" [(ngModel)]="userType.idempresa" name="idempresa" class="form-control" placeholder="EMPRESA (ID)" required>
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Tipo</label>
+        <input type="text" [(ngModel)]="userType.tipo" name="tipo" class="form-control" placeholder="TIPO">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Estado</label>
+        <input type="text" [(ngModel)]="userType.estado" name="estado" class="form-control" placeholder="ESTADO">
+      </div>
+    </div>
+    <div *ngIf="f.submitted && f.invalid" class="alert alert-warning">Complete los campos obligatorios (*)</div>
+    <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Agregar</button>
+  </form>
+  </div>
+</div>
+
+<div class="table-responsive mt-4">
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
           <th>NO</th>
-          <th>EMPRESA</th>
+          <th>EMPRESA (ID)</th>
           <th>TIPO</th>
           <th>ESTADO</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let userType of userTypes">
-          <td>{{userType.idtpusuario}}</td>
-          <td>{{userType.idempresa}}</td>
-          <td>{{userType.tipo}}</td>
-          <td>{{userType.estado}}</td>
-          <td><button class="btn btn-danger">Eliminar</button></td>
-          <td><button class="btn btn-success">Actualizar</button></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of userTypes">
+          <td>{{item.idtpusuario}}</td>
+          <td>{{item.idempresa}}</td>
+          <td>{{item.tipo}}</td>
+          <td>{{item.estado}}</td>
+        <td><button class="btn btn-danger" (click)="deleteUserType(item.idtpusuario)">Eliminar</button></td>
+        <td><button class="btn btn-success" [routerLink]="['/user-types/edit', item.idtpusuario]">Actualizar</button></td>
+      </tr>
+    </tbody>
+  </table>
 </div>

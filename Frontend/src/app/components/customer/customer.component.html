@@ -2,43 +2,98 @@
   <a href="/" class="navbar-brand">REGISTRO DE CLIENTES</a>
 </nav>
 
-<div class="container">
-  <div class="row mt-4">
-    <table class="table table-bordered table-hover">
-      <thead>
-        <tr>
+<div class="card mt-4">
+  <div class="card-body">
+  <form #f="ngForm" (ngSubmit)="addCustomer()" novalidate>
+    <div class="row">
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Empresa (id) *</label>
+        <input type="number" [(ngModel)]="customer.idempresa" name="idempresa" class="form-control" placeholder="EMPRESA (ID)" required>
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Sucursal (id) *</label>
+        <input type="number" [(ngModel)]="customer.idsuc" name="idsuc" class="form-control" placeholder="SUCURSAL (ID)" required>
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Identidad</label>
+        <input type="text" [(ngModel)]="customer.identidad" name="identidad" class="form-control" placeholder="IDENTIDAD">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">RTN</label>
+        <input type="text" [(ngModel)]="customer.rtn" name="rtn" class="form-control" placeholder="RTN">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Fecha nacimiento</label>
+        <input type="date" [(ngModel)]="customer.fecha_nac" name="fecha_nac" class="form-control">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Nombre</label>
+        <input type="text" [(ngModel)]="customer.nombre" name="nombre" class="form-control" placeholder="NOMBRE">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Teléfono</label>
+        <input type="text" [(ngModel)]="customer.telefono" name="telefono" class="form-control" placeholder="TELÉFONO">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Dirección</label>
+        <input type="text" [(ngModel)]="customer.direccion" name="direccion" class="form-control" placeholder="DIRECCIÓN">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Correo</label>
+        <input type="email" [(ngModel)]="customer.correo" name="correo" class="form-control" placeholder="CORREO">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Fecha creación</label>
+        <input type="date" [(ngModel)]="customer.fecha_creacion" name="fecha_creacion" class="form-control">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Estado</label>
+        <input type="text" [(ngModel)]="customer.estado" name="estado" class="form-control" placeholder="ESTADO">
+      </div>
+    </div>
+    <div *ngIf="f.submitted && f.invalid" class="alert alert-warning">Complete los campos obligatorios (*)</div>
+    <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Agregar</button>
+  </form>
+  </div>
+</div>
+
+<div class="table-responsive mt-4">
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
           <th>NO</th>
-          <th>EMPRESA</th>
-          <th>SUCURSAL</th>
+          <th>EMPRESA (ID)</th>
+          <th>SUCURSAL (ID)</th>
           <th>IDENTIDAD</th>
           <th>RTN</th>
           <th>FECHA NACIMIENTO</th>
           <th>NOMBRE</th>
-          <th>TELEFONO</th>
-          <th>DIRECCION</th>
+          <th>TELÉFONO</th>
+          <th>DIRECCIÓN</th>
           <th>CORREO</th>
-          <th>FECHA CREACION</th>
+          <th>FECHA CREACIÓN</th>
           <th>ESTADO</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let customer of customers">
-          <td>{{customer.num_clie}}</td>
-          <td>{{customer.idempresa}}</td>
-          <td>{{customer.idsuc}}</td>
-          <td>{{customer.identidad}}</td>
-          <td>{{customer.rtn}}</td>
-          <td>{{customer.fecha_nac}}</td>
-          <td>{{customer.nombre}}</td>
-          <td>{{customer.telefono}}</td>
-          <td>{{customer.direccion}}</td>
-          <td>{{customer.correo}}</td>
-          <td>{{customer.fecha_creacion}}</td>
-          <td>{{customer.estado}}</td>
-          <td><button class="btn btn-danger">Eliminar</button></td>
-          <td><button class="btn btn-success">Actualizar</button></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of customers">
+          <td>{{item.num_clie}}</td>
+          <td>{{item.idempresa}}</td>
+          <td>{{item.idsuc}}</td>
+          <td>{{item.identidad}}</td>
+          <td>{{item.rtn}}</td>
+          <td>{{item.fecha_nac}}</td>
+          <td>{{item.nombre}}</td>
+          <td>{{item.telefono}}</td>
+          <td>{{item.direccion}}</td>
+          <td>{{item.correo}}</td>
+          <td>{{item.fecha_creacion}}</td>
+          <td>{{item.estado}}</td>
+        <td><button class="btn btn-danger" (click)="deleteCustomer(item.num_clie)">Eliminar</button></td>
+        <td><button class="btn btn-success" [routerLink]="['/customers/edit', item.num_clie]">Actualizar</button></td>
+      </tr>
+    </tbody>
+  </table>
 </div>

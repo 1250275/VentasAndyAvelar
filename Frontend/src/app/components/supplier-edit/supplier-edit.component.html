@@ -1,0 +1,47 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a href="/" class="navbar-brand">ACTUALIZAR PROVEEDORES</a>
+</nav>
+
+<div class="card mt-4">
+  <div class="card-body">
+  <form #f="ngForm" (ngSubmit)="updateSupplier()" novalidate>
+    <div class="row">
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Empresa (id) *</label>
+        <input type="number" [(ngModel)]="supplier.idempresa" name="idempresa" class="form-control" placeholder="EMPRESA (ID)" required>
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Proveedor *</label>
+        <input type="text" [(ngModel)]="supplier.proveedor" name="proveedor" class="form-control" placeholder="PROVEEDOR" required>
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Dirección</label>
+        <input type="text" [(ngModel)]="supplier.direccion" name="direccion" class="form-control" placeholder="DIRECCIÓN">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Teléfono</label>
+        <input type="text" [(ngModel)]="supplier.telefono" name="telefono" class="form-control" placeholder="TELÉFONO">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Responsable</label>
+        <input type="text" [(ngModel)]="supplier.responsable" name="responsable" class="form-control" placeholder="RESPONSABLE">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Fecha creación</label>
+        <input type="date" [(ngModel)]="supplier.fecha_creacion" name="fecha_creacion" class="form-control">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Observaciones</label>
+        <input type="text" [(ngModel)]="supplier.observaciones" name="observaciones" class="form-control" placeholder="OBSERVACIONES">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Estado</label>
+        <input type="text" [(ngModel)]="supplier.estado" name="estado" class="form-control" placeholder="ESTADO">
+      </div>
+    </div>
+    <div *ngIf="f.submitted && f.invalid" class="alert alert-warning">Complete los campos obligatorios (*)</div>
+    <button type="submit" class="btn btn-success" [disabled]="f.invalid">Actualizar</button>
+  </form>
+    <a routerLink="/suppliers" class="btn btn-secondary mt-2">Cancelar</a>
+  </div>
+</div>

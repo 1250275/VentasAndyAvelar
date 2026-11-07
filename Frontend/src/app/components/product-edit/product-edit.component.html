@@ -1,0 +1,63 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a href="/" class="navbar-brand">ACTUALIZAR PRODUCTOS</a>
+</nav>
+
+<div class="card mt-4">
+  <div class="card-body">
+  <form #f="ngForm" (ngSubmit)="updateProduct()" novalidate>
+    <div class="row">
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Empresa (id) *</label>
+        <input type="number" [(ngModel)]="product.idempresa" name="idempresa" class="form-control" placeholder="EMPRESA (ID)" required>
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Sucursal (id) *</label>
+        <input type="number" [(ngModel)]="product.idsuc" name="idsuc" class="form-control" placeholder="SUCURSAL (ID)" required>
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Tipo de producto (id) *</label>
+        <input type="number" [(ngModel)]="product.idtpprod" name="idtpprod" class="form-control" placeholder="TIPO DE PRODUCTO (ID)" required>
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Descripción</label>
+        <input type="text" [(ngModel)]="product.descripcion" name="descripcion" class="form-control" placeholder="DESCRIPCIÓN">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Presentación</label>
+        <input type="text" [(ngModel)]="product.presentacion" name="presentacion" class="form-control" placeholder="PRESENTACIÓN">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Marca</label>
+        <input type="text" [(ngModel)]="product.marca" name="marca" class="form-control" placeholder="MARCA">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Costo</label>
+        <input type="number" [(ngModel)]="product.valor" name="valor" class="form-control" step="0.01" placeholder="COSTO">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Precio venta</label>
+        <input type="number" [(ngModel)]="product.precioventa" name="precioventa" class="form-control" step="0.01" placeholder="PRECIO VENTA">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Existencia</label>
+        <input type="number" [(ngModel)]="product.existencia" name="existencia" class="form-control" placeholder="EXISTENCIA">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Fecha ingreso</label>
+        <input type="date" [(ngModel)]="product.fecha_ingreso" name="fecha_ingreso" class="form-control">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Fecha actualización</label>
+        <input type="date" [(ngModel)]="product.fecha_actualiza" name="fecha_actualiza" class="form-control">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Estado</label>
+        <input type="text" [(ngModel)]="product.estado" name="estado" class="form-control" placeholder="ESTADO">
+      </div>
+    </div>
+    <div *ngIf="f.submitted && f.invalid" class="alert alert-warning">Complete los campos obligatorios (*)</div>
+    <button type="submit" class="btn btn-success" [disabled]="f.invalid">Actualizar</button>
+  </form>
+    <a routerLink="/products" class="btn btn-secondary mt-2">Cancelar</a>
+  </div>
+</div>

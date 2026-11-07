@@ -1,0 +1,35 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a href="/" class="navbar-brand">ACTUALIZAR ÁREAS DE TRABAJO</a>
+</nav>
+
+<div class="card mt-4">
+  <div class="card-body">
+  <form #f="ngForm" (ngSubmit)="updateWorkArea()" novalidate>
+    <div class="row">
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Empresa (id) *</label>
+        <input type="number" [(ngModel)]="workArea.idempresa" name="idempresa" class="form-control" placeholder="EMPRESA (ID)" required>
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Sucursal (id) *</label>
+        <input type="number" [(ngModel)]="workArea.idsuc" name="idsuc" class="form-control" placeholder="SUCURSAL (ID)" required>
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Área</label>
+        <input type="text" [(ngModel)]="workArea.area" name="area" class="form-control" placeholder="ÁREA">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Fecha creación</label>
+        <input type="date" [(ngModel)]="workArea.fecha_creacion" name="fecha_creacion" class="form-control">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Estado</label>
+        <input type="text" [(ngModel)]="workArea.estado" name="estado" class="form-control" placeholder="ESTADO">
+      </div>
+    </div>
+    <div *ngIf="f.submitted && f.invalid" class="alert alert-warning">Complete los campos obligatorios (*)</div>
+    <button type="submit" class="btn btn-success" [disabled]="f.invalid">Actualizar</button>
+  </form>
+    <a routerLink="/work-areas" class="btn btn-secondary mt-2">Cancelar</a>
+  </div>
+</div>

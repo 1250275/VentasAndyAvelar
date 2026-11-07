@@ -2,33 +2,72 @@
   <a href="/" class="navbar-brand">REGISTRO DE USUARIOS</a>
 </nav>
 
-<div class="container">
-  <div class="row mt-4">
-    <table class="table table-bordered table-hover">
-      <thead>
-        <tr>
+<div class="card mt-4">
+  <div class="card-body">
+  <form #f="ngForm" (ngSubmit)="addUser()" novalidate>
+    <div class="row">
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Empresa (id) *</label>
+        <input type="number" [(ngModel)]="user.idempresa" name="idempresa" class="form-control" placeholder="EMPRESA (ID)" required>
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Sucursal (id) *</label>
+        <input type="number" [(ngModel)]="user.idsuc" name="idsuc" class="form-control" placeholder="SUCURSAL (ID)" required>
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Tipo de usuario (id) *</label>
+        <input type="number" [(ngModel)]="user.idtpusuario" name="idtpusuario" class="form-control" placeholder="TIPO DE USUARIO (ID)" required>
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Empleado (id) *</label>
+        <input type="number" [(ngModel)]="user.idemp" name="idemp" class="form-control" placeholder="EMPLEADO (ID)" required>
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Usuario *</label>
+        <input type="text" [(ngModel)]="user.usuario" name="usuario" class="form-control" placeholder="USUARIO" required>
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Clave *</label>
+        <input type="password" [(ngModel)]="user.clave" name="clave" class="form-control" placeholder="CLAVE" required>
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Estado</label>
+        <input type="text" [(ngModel)]="user.estado" name="estado" class="form-control" placeholder="ESTADO">
+      </div>
+    </div>
+    <div *ngIf="f.submitted && f.invalid" class="alert alert-warning">Complete los campos obligatorios (*)</div>
+    <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Agregar</button>
+  </form>
+  </div>
+</div>
+
+<div class="table-responsive mt-4">
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
           <th>NO</th>
-          <th>EMPRESA</th>
-          <th>SUCURSAL</th>
-          <th>TIPO USUARIO</th>
-          <th>EMPLEADO</th>
+          <th>EMPRESA (ID)</th>
+          <th>SUCURSAL (ID)</th>
+          <th>TIPO DE USUARIO (ID)</th>
+          <th>EMPLEADO (ID)</th>
           <th>USUARIO</th>
           <th>ESTADO</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let user of users">
-          <td>{{user.userid}}</td>
-          <td>{{user.idempresa}}</td>
-          <td>{{user.idsuc}}</td>
-          <td>{{user.idtpusuario}}</td>
-          <td>{{user.idemp}}</td>
-          <td>{{user.usuario}}</td>
-          <td>{{user.estado}}</td>
-          <td><button class="btn btn-danger">Eliminar</button></td>
-          <td><button class="btn btn-success">Actualizar</button></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of users">
+          <td>{{item.userid}}</td>
+          <td>{{item.idempresa}}</td>
+          <td>{{item.idsuc}}</td>
+          <td>{{item.idtpusuario}}</td>
+          <td>{{item.idemp}}</td>
+          <td>{{item.usuario}}</td>
+          <td>{{item.estado}}</td>
+        <td><button class="btn btn-danger" (click)="deleteUser(item.userid)">Eliminar</button></td>
+        <td><button class="btn btn-success" [routerLink]="['/users/edit', item.userid]">Actualizar</button></td>
+      </tr>
+    </tbody>
+  </table>
 </div>

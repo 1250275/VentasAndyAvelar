@@ -1,0 +1,43 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a href="/" class="navbar-brand">ACTUALIZAR USUARIOS</a>
+</nav>
+
+<div class="card mt-4">
+  <div class="card-body">
+  <form #f="ngForm" (ngSubmit)="updateUser()" novalidate>
+    <div class="row">
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Empresa (id) *</label>
+        <input type="number" [(ngModel)]="user.idempresa" name="idempresa" class="form-control" placeholder="EMPRESA (ID)" required>
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Sucursal (id) *</label>
+        <input type="number" [(ngModel)]="user.idsuc" name="idsuc" class="form-control" placeholder="SUCURSAL (ID)" required>
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Tipo de usuario (id) *</label>
+        <input type="number" [(ngModel)]="user.idtpusuario" name="idtpusuario" class="form-control" placeholder="TIPO DE USUARIO (ID)" required>
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Empleado (id) *</label>
+        <input type="number" [(ngModel)]="user.idemp" name="idemp" class="form-control" placeholder="EMPLEADO (ID)" required>
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Usuario *</label>
+        <input type="text" [(ngModel)]="user.usuario" name="usuario" class="form-control" placeholder="USUARIO" required>
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Clave</label>
+        <input type="password" [(ngModel)]="user.clave" name="clave" class="form-control" placeholder="Dejar vacío para no cambiarla">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Estado</label>
+        <input type="text" [(ngModel)]="user.estado" name="estado" class="form-control" placeholder="ESTADO">
+      </div>
+    </div>
+    <div *ngIf="f.submitted && f.invalid" class="alert alert-warning">Complete los campos obligatorios (*)</div>
+    <button type="submit" class="btn btn-success" [disabled]="f.invalid">Actualizar</button>
+  </form>
+    <a routerLink="/users" class="btn btn-secondary mt-2">Cancelar</a>
+  </div>
+</div>

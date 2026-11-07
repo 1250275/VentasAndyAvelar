@@ -1,0 +1,72 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a href="/" class="navbar-brand">ACTUALIZAR EMPLEADOS</a>
+</nav>
+
+<div class="card mt-4">
+  <div class="card-body">
+  <form #f="ngForm" (ngSubmit)="updateEmployee()" novalidate>
+    <div class="row">
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Empresa (id) *</label>
+        <input type="number" [(ngModel)]="employee.idempresa" name="idempresa" class="form-control" placeholder="EMPRESA (ID)" required>
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Sucursal (id) *</label>
+        <input type="number" [(ngModel)]="employee.idsuc" name="idsuc" class="form-control" placeholder="SUCURSAL (ID)" required>
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Área (id) *</label>
+        <input type="number" [(ngModel)]="employee.idarea" name="idarea" class="form-control" placeholder="ÁREA (ID)" required>
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Identidad</label>
+        <input type="text" [(ngModel)]="employee.identidad" name="identidad" class="form-control" placeholder="IDENTIDAD">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Fecha nacimiento</label>
+        <input type="date" [(ngModel)]="employee.fecha_nac" name="fecha_nac" class="form-control">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Nombres</label>
+        <input type="text" [(ngModel)]="employee.nombres" name="nombres" class="form-control" placeholder="NOMBRES">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Apellidos</label>
+        <input type="text" [(ngModel)]="employee.apellidos" name="apellidos" class="form-control" placeholder="APELLIDOS">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Sexo</label>
+        <select [(ngModel)]="employee.sexo" name="sexo" class="form-control">
+          <option [ngValue]="null">-- Seleccione --</option>
+          <option value="F">Femenino</option>
+          <option value="M">Masculino</option>
+        </select>
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Estado civil</label>
+        <select [(ngModel)]="employee.estado_civil" name="estado_civil" class="form-control">
+          <option [ngValue]="null">-- Seleccione --</option>
+          <option value="Soltero">Soltero</option>
+          <option value="Casado">Casado</option>
+          <option value="Union libre">Unión libre</option>
+        </select>
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Dirección</label>
+        <input type="text" [(ngModel)]="employee.direccion" name="direccion" class="form-control" placeholder="DIRECCIÓN">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Fecha creación</label>
+        <input type="date" [(ngModel)]="employee.fecha_creacion" name="fecha_creacion" class="form-control">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Estado</label>
+        <input type="text" [(ngModel)]="employee.estado" name="estado" class="form-control" placeholder="ESTADO">
+      </div>
+    </div>
+    <div *ngIf="f.submitted && f.invalid" class="alert alert-warning">Complete los campos obligatorios (*)</div>
+    <button type="submit" class="btn btn-success" [disabled]="f.invalid">Actualizar</button>
+  </form>
+    <a routerLink="/employees" class="btn btn-secondary mt-2">Cancelar</a>
+  </div>
+</div>

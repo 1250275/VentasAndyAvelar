@@ -2,27 +2,50 @@
   <a href="/" class="navbar-brand">REGISTRO DE TIPOS DE PRODUCTO</a>
 </nav>
 
-<div class="container">
-  <div class="row mt-4">
-    <table class="table table-bordered table-hover">
-      <thead>
-        <tr>
+<div class="card mt-4">
+  <div class="card-body">
+  <form #f="ngForm" (ngSubmit)="addProductType()" novalidate>
+    <div class="row">
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Empresa (id) *</label>
+        <input type="number" [(ngModel)]="productType.idempresa" name="idempresa" class="form-control" placeholder="EMPRESA (ID)" required>
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Tipo</label>
+        <input type="text" [(ngModel)]="productType.tipo" name="tipo" class="form-control" placeholder="TIPO">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Estado</label>
+        <input type="text" [(ngModel)]="productType.estado" name="estado" class="form-control" placeholder="ESTADO">
+      </div>
+    </div>
+    <div *ngIf="f.submitted && f.invalid" class="alert alert-warning">Complete los campos obligatorios (*)</div>
+    <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Agregar</button>
+  </form>
+  </div>
+</div>
+
+<div class="table-responsive mt-4">
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
           <th>NO</th>
-          <th>EMPRESA</th>
+          <th>EMPRESA (ID)</th>
           <th>TIPO</th>
           <th>ESTADO</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let productType of productTypes">
-          <td>{{productType.idtpprod}}</td>
-          <td>{{productType.idempresa}}</td>
-          <td>{{productType.tipo}}</td>
-          <td>{{productType.estado}}</td>
-          <td><button class="btn btn-danger">Eliminar</button></td>
-          <td><button class="btn btn-success">Actualizar</button></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of productTypes">
+          <td>{{item.idtpprod}}</td>
+          <td>{{item.idempresa}}</td>
+          <td>{{item.tipo}}</td>
+          <td>{{item.estado}}</td>
+        <td><button class="btn btn-danger" (click)="deleteProductType(item.idtpprod)">Eliminar</button></td>
+        <td><button class="btn btn-success" [routerLink]="['/product-types/edit', item.idtpprod]">Actualizar</button></td>
+      </tr>
+    </tbody>
+  </table>
 </div>

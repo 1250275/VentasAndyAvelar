@@ -1,32 +1,63 @@
 <nav class="navbar navbar-dark bg-dark">
-  <a href="/" class="navbar-brand">REGISTRO DE AREAS DE TRABAJO</a>
+  <a href="/" class="navbar-brand">REGISTRO DE ÁREAS DE TRABAJO</a>
 </nav>
 
-<div class="container">
-  <div class="row mt-4">
-    <table class="table table-bordered table-hover">
-      <thead>
-        <tr>
-          <th>NO</th>
-          <th>EMPRESA</th>
-          <th>SUCURSAL</th>
-          <th>AREA</th>
-          <th>FECHA CREACION</th>
-          <th>ESTADO</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let workArea of workAreas">
-          <td>{{workArea.idarea}}</td>
-          <td>{{workArea.idempresa}}</td>
-          <td>{{workArea.idsuc}}</td>
-          <td>{{workArea.area}}</td>
-          <td>{{workArea.fecha_creacion}}</td>
-          <td>{{workArea.estado}}</td>
-          <td><button class="btn btn-danger">Eliminar</button></td>
-          <td><button class="btn btn-success">Actualizar</button></td>
-        </tr>
-      </tbody>
-    </table>
+<div class="card mt-4">
+  <div class="card-body">
+  <form #f="ngForm" (ngSubmit)="addWorkArea()" novalidate>
+    <div class="row">
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Empresa (id) *</label>
+        <input type="number" [(ngModel)]="workArea.idempresa" name="idempresa" class="form-control" placeholder="EMPRESA (ID)" required>
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Sucursal (id) *</label>
+        <input type="number" [(ngModel)]="workArea.idsuc" name="idsuc" class="form-control" placeholder="SUCURSAL (ID)" required>
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Área</label>
+        <input type="text" [(ngModel)]="workArea.area" name="area" class="form-control" placeholder="ÁREA">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Fecha creación</label>
+        <input type="date" [(ngModel)]="workArea.fecha_creacion" name="fecha_creacion" class="form-control">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Estado</label>
+        <input type="text" [(ngModel)]="workArea.estado" name="estado" class="form-control" placeholder="ESTADO">
+      </div>
+    </div>
+    <div *ngIf="f.submitted && f.invalid" class="alert alert-warning">Complete los campos obligatorios (*)</div>
+    <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Agregar</button>
+  </form>
   </div>
+</div>
+
+<div class="table-responsive mt-4">
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+          <th>NO</th>
+          <th>EMPRESA (ID)</th>
+          <th>SUCURSAL (ID)</th>
+          <th>ÁREA</th>
+          <th>FECHA CREACIÓN</th>
+          <th>ESTADO</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of workAreas">
+          <td>{{item.idarea}}</td>
+          <td>{{item.idempresa}}</td>
+          <td>{{item.idsuc}}</td>
+          <td>{{item.area}}</td>
+          <td>{{item.fecha_creacion}}</td>
+          <td>{{item.estado}}</td>
+        <td><button class="btn btn-danger" (click)="deleteWorkArea(item.idarea)">Eliminar</button></td>
+        <td><button class="btn btn-success" [routerLink]="['/work-areas/edit', item.idarea]">Actualizar</button></td>
+      </tr>
+    </tbody>
+  </table>
 </div>

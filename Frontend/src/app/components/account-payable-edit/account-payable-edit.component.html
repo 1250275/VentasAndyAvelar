@@ -1,0 +1,75 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a href="/" class="navbar-brand">ACTUALIZAR CUENTAS POR PAGAR</a>
+</nav>
+
+<div class="card mt-4">
+  <div class="card-body">
+  <form #f="ngForm" (ngSubmit)="updateAccountPayable()" novalidate>
+    <div class="row">
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Compra (no.) *</label>
+        <input type="number" [(ngModel)]="accountPayable.num_compra" name="num_compra" class="form-control" placeholder="COMPRA (NO.)" required>
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Empresa (id) *</label>
+        <input type="number" [(ngModel)]="accountPayable.idempresa" name="idempresa" class="form-control" placeholder="EMPRESA (ID)" required>
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Sucursal (id) *</label>
+        <input type="number" [(ngModel)]="accountPayable.idsuc" name="idsuc" class="form-control" placeholder="SUCURSAL (ID)" required>
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Proveedor (id) *</label>
+        <input type="number" [(ngModel)]="accountPayable.idprov" name="idprov" class="form-control" placeholder="PROVEEDOR (ID)" required>
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Usuario (id) *</label>
+        <input type="number" [(ngModel)]="accountPayable.userid" name="userid" class="form-control" placeholder="USUARIO (ID)" required>
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Forma de pago (id) *</label>
+        <input type="number" [(ngModel)]="accountPayable.idfpago" name="idfpago" class="form-control" placeholder="FORMA DE PAGO (ID)" required>
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Fecha compra</label>
+        <input type="date" [(ngModel)]="accountPayable.fecha_compra" name="fecha_compra" class="form-control">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Producto (id) *</label>
+        <input type="number" [(ngModel)]="accountPayable.num_prod" name="num_prod" class="form-control" placeholder="PRODUCTO (ID)" required>
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Cantidad</label>
+        <input type="number" [(ngModel)]="accountPayable.cantidad" name="cantidad" class="form-control" placeholder="CANTIDAD">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Precio</label>
+        <input type="number" [(ngModel)]="accountPayable.precio" name="precio" class="form-control" step="0.01" placeholder="PRECIO">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Subtotal</label>
+        <input type="number" [(ngModel)]="accountPayable.subtotal" name="subtotal" class="form-control" step="0.01" placeholder="SUBTOTAL">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">ISV</label>
+        <input type="number" [(ngModel)]="accountPayable.isv" name="isv" class="form-control" step="0.01" placeholder="ISV">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Total</label>
+        <input type="number" [(ngModel)]="accountPayable.total" name="total" class="form-control" step="0.01" placeholder="TOTAL">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Fecha pago</label>
+        <input type="date" [(ngModel)]="accountPayable.fecha_pago" name="fecha_pago" class="form-control">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Estado</label>
+        <input type="text" [(ngModel)]="accountPayable.estado" name="estado" class="form-control" placeholder="ESTADO">
+      </div>
+    </div>
+    <div *ngIf="f.submitted && f.invalid" class="alert alert-warning">Complete los campos obligatorios (*)</div>
+    <button type="submit" class="btn btn-success" [disabled]="f.invalid">Actualizar</button>
+  </form>
+    <a routerLink="/accounts-payable" class="btn btn-secondary mt-2">Cancelar</a>
+  </div>
+</div>

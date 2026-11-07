@@ -2,37 +2,80 @@
   <a href="/" class="navbar-brand">REGISTRO DE EMPRESAS</a>
 </nav>
 
-<div class="container">
-  <div class="row mt-4">
-    <table class="table table-bordered table-hover">
-      <thead>
-        <tr>
+<div class="card mt-4">
+  <div class="card-body">
+  <form #f="ngForm" (ngSubmit)="addCompany()" novalidate>
+    <div class="row">
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Nombre *</label>
+        <input type="text" [(ngModel)]="company.nombre" name="nombre" class="form-control" placeholder="NOMBRE" required>
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Dirección</label>
+        <input type="text" [(ngModel)]="company.direccion" name="direccion" class="form-control" placeholder="DIRECCIÓN">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">RTN</label>
+        <input type="text" [(ngModel)]="company.rtn" name="rtn" class="form-control" placeholder="RTN">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Teléfono</label>
+        <input type="text" [(ngModel)]="company.telefono" name="telefono" class="form-control" placeholder="TELÉFONO">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Correo</label>
+        <input type="email" [(ngModel)]="company.correo" name="correo" class="form-control" placeholder="CORREO">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Contacto</label>
+        <input type="text" [(ngModel)]="company.contacto" name="contacto" class="form-control" placeholder="CONTACTO">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Fecha creación</label>
+        <input type="date" [(ngModel)]="company.fecha_creacion" name="fecha_creacion" class="form-control">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Estado</label>
+        <input type="text" [(ngModel)]="company.estado" name="estado" class="form-control" placeholder="ESTADO">
+      </div>
+    </div>
+    <div *ngIf="f.submitted && f.invalid" class="alert alert-warning">Complete los campos obligatorios (*)</div>
+    <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Agregar</button>
+  </form>
+  </div>
+</div>
+
+<div class="table-responsive mt-4">
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
           <th>NO</th>
-          <th>EMPRESA</th>
-          <th>DIRECCION</th>
+          <th>NOMBRE</th>
+          <th>DIRECCIÓN</th>
           <th>RTN</th>
-          <th>TELEFONO</th>
+          <th>TELÉFONO</th>
           <th>CORREO</th>
           <th>CONTACTO</th>
-          <th>FECHA CREACION</th>
+          <th>FECHA CREACIÓN</th>
           <th>ESTADO</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let company of companies">
-          <td>{{company.idempresa}}</td>
-          <td>{{company.nombre}}</td>
-          <td>{{company.direccion}}</td>
-          <td>{{company.rtn}}</td>
-          <td>{{company.telefono}}</td>
-          <td>{{company.correo}}</td>
-          <td>{{company.contacto}}</td>
-          <td>{{company.fecha_creacion}}</td>
-          <td>{{company.estado}}</td>
-          <td><button class="btn btn-danger">Eliminar</button></td>
-          <td><button class="btn btn-success">Actualizar</button></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of companies">
+          <td>{{item.idempresa}}</td>
+          <td>{{item.nombre}}</td>
+          <td>{{item.direccion}}</td>
+          <td>{{item.rtn}}</td>
+          <td>{{item.telefono}}</td>
+          <td>{{item.correo}}</td>
+          <td>{{item.contacto}}</td>
+          <td>{{item.fecha_creacion}}</td>
+          <td>{{item.estado}}</td>
+        <td><button class="btn btn-danger" (click)="deleteCompany(item.idempresa)">Eliminar</button></td>
+        <td><button class="btn btn-success" [routerLink]="['/companies/edit', item.idempresa]">Actualizar</button></td>
+      </tr>
+    </tbody>
+  </table>
 </div>

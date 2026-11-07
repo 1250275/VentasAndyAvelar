@@ -11,20 +11,7 @@ export class CustomerComponent implements OnInit {
 
   customers: any = [];
 
-  customer: Customer = {
-    num_clie: null,
-    idempresa: null,
-    idsuc: null,
-    identidad: null,
-    rtn: null,
-    fecha_nac: null,
-    nombre: null,
-    telefono: null,
-    direccion: null,
-    correo: null,
-    fecha_creacion: null,
-    estado: 'Activo'
-  }
+  customer: Customer = this.newCustomer();
 
   constructor(private Data: DataService) { }
 
@@ -32,11 +19,55 @@ export class CustomerComponent implements OnInit {
     this.getCustomers();
   }
 
+  newCustomer(): Customer {
+    return {
+      num_clie: null,
+      idempresa: null,
+      idsuc: null,
+      identidad: null,
+      rtn: null,
+      fecha_nac: null,
+      nombre: null,
+      telefono: null,
+      direccion: null,
+      correo: null,
+      fecha_creacion: null,
+      estado: 'Activo'
+    };
+  }
+
   getCustomers() {
     this.Data.getAll('/customers')
       .subscribe(res => {
         this.customers = res;
       }, err => console.error(err));
+  }
+
+  addCustomer() {
+    delete this.customer.num_clie;
+    this.Data.save(this.customer, '/customers')
+      .subscribe(
+        res => {
+          alert('Registro almacenado');
+          this.customer = this.newCustomer();
+          this.getCustomers();
+        },
+        err => alert('No se pudo guardar el registro.\n' + err)
+      );
+  }
+
+  deleteCustomer(id: number) {
+    if (!confirm('¿Desea eliminar el registro ' + id + '?')) {
+      return;
+    }
+    this.Data.delete(id, '/customers')
+      .subscribe(
+        res => {
+          alert('Registro eliminado');
+          this.getCustomers();
+        },
+        err => alert('No se pudo eliminar el registro.\n' + (err.error?.sqlMessage || err.message))
+      );
   }
 
 }

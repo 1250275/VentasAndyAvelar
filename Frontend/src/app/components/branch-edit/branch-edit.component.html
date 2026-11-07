@@ -1,0 +1,35 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a href="/" class="navbar-brand">ACTUALIZAR SUCURSALES</a>
+</nav>
+
+<div class="card mt-4">
+  <div class="card-body">
+  <form #f="ngForm" (ngSubmit)="updateBranch()" novalidate>
+    <div class="row">
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Empresa (id) *</label>
+        <input type="number" [(ngModel)]="branch.idempresa" name="idempresa" class="form-control" placeholder="EMPRESA (ID)" required>
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Sucursal</label>
+        <input type="text" [(ngModel)]="branch.sucursal" name="sucursal" class="form-control" placeholder="SUCURSAL">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Dirección</label>
+        <input type="text" [(ngModel)]="branch.dirsuc" name="dirsuc" class="form-control" placeholder="DIRECCIÓN">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Teléfono</label>
+        <input type="text" [(ngModel)]="branch.telefono" name="telefono" class="form-control" placeholder="TELÉFONO">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Estado</label>
+        <input type="text" [(ngModel)]="branch.estado" name="estado" class="form-control" placeholder="ESTADO">
+      </div>
+    </div>
+    <div *ngIf="f.submitted && f.invalid" class="alert alert-warning">Complete los campos obligatorios (*)</div>
+    <button type="submit" class="btn btn-success" [disabled]="f.invalid">Actualizar</button>
+  </form>
+    <a routerLink="/branches" class="btn btn-secondary mt-2">Cancelar</a>
+  </div>
+</div>

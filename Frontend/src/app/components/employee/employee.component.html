@@ -2,45 +2,113 @@
   <a href="/" class="navbar-brand">REGISTRO DE EMPLEADOS</a>
 </nav>
 
-<div class="container">
-  <div class="row mt-4">
-    <table class="table table-bordered table-hover">
-      <thead>
-        <tr>
+<div class="card mt-4">
+  <div class="card-body">
+  <form #f="ngForm" (ngSubmit)="addEmployee()" novalidate>
+    <div class="row">
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Empresa (id) *</label>
+        <input type="number" [(ngModel)]="employee.idempresa" name="idempresa" class="form-control" placeholder="EMPRESA (ID)" required>
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Sucursal (id) *</label>
+        <input type="number" [(ngModel)]="employee.idsuc" name="idsuc" class="form-control" placeholder="SUCURSAL (ID)" required>
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Área (id) *</label>
+        <input type="number" [(ngModel)]="employee.idarea" name="idarea" class="form-control" placeholder="ÁREA (ID)" required>
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Identidad</label>
+        <input type="text" [(ngModel)]="employee.identidad" name="identidad" class="form-control" placeholder="IDENTIDAD">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Fecha nacimiento</label>
+        <input type="date" [(ngModel)]="employee.fecha_nac" name="fecha_nac" class="form-control">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Nombres</label>
+        <input type="text" [(ngModel)]="employee.nombres" name="nombres" class="form-control" placeholder="NOMBRES">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Apellidos</label>
+        <input type="text" [(ngModel)]="employee.apellidos" name="apellidos" class="form-control" placeholder="APELLIDOS">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Sexo</label>
+        <select [(ngModel)]="employee.sexo" name="sexo" class="form-control">
+          <option [ngValue]="null">-- Seleccione --</option>
+          <option value="F">Femenino</option>
+          <option value="M">Masculino</option>
+        </select>
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Estado civil</label>
+        <select [(ngModel)]="employee.estado_civil" name="estado_civil" class="form-control">
+          <option [ngValue]="null">-- Seleccione --</option>
+          <option value="Soltero">Soltero</option>
+          <option value="Casado">Casado</option>
+          <option value="Union libre">Unión libre</option>
+        </select>
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Dirección</label>
+        <input type="text" [(ngModel)]="employee.direccion" name="direccion" class="form-control" placeholder="DIRECCIÓN">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Fecha creación</label>
+        <input type="date" [(ngModel)]="employee.fecha_creacion" name="fecha_creacion" class="form-control">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Estado</label>
+        <input type="text" [(ngModel)]="employee.estado" name="estado" class="form-control" placeholder="ESTADO">
+      </div>
+    </div>
+    <div *ngIf="f.submitted && f.invalid" class="alert alert-warning">Complete los campos obligatorios (*)</div>
+    <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Agregar</button>
+  </form>
+  </div>
+</div>
+
+<div class="table-responsive mt-4">
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
           <th>NO</th>
-          <th>EMPRESA</th>
-          <th>SUCURSAL</th>
-          <th>AREA</th>
+          <th>EMPRESA (ID)</th>
+          <th>SUCURSAL (ID)</th>
+          <th>ÁREA (ID)</th>
           <th>IDENTIDAD</th>
           <th>FECHA NACIMIENTO</th>
           <th>NOMBRES</th>
           <th>APELLIDOS</th>
           <th>SEXO</th>
           <th>ESTADO CIVIL</th>
-          <th>DIRECCION</th>
-          <th>FECHA CREACION</th>
+          <th>DIRECCIÓN</th>
+          <th>FECHA CREACIÓN</th>
           <th>ESTADO</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let employee of employees">
-          <td>{{employee.idemp}}</td>
-          <td>{{employee.idempresa}}</td>
-          <td>{{employee.idsuc}}</td>
-          <td>{{employee.idarea}}</td>
-          <td>{{employee.identidad}}</td>
-          <td>{{employee.fecha_nac}}</td>
-          <td>{{employee.nombres}}</td>
-          <td>{{employee.apellidos}}</td>
-          <td>{{employee.sexo}}</td>
-          <td>{{employee.estado_civil}}</td>
-          <td>{{employee.direccion}}</td>
-          <td>{{employee.fecha_creacion}}</td>
-          <td>{{employee.estado}}</td>
-          <td><button class="btn btn-danger">Eliminar</button></td>
-          <td><button class="btn btn-success">Actualizar</button></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of employees">
+          <td>{{item.idemp}}</td>
+          <td>{{item.idempresa}}</td>
+          <td>{{item.idsuc}}</td>
+          <td>{{item.idarea}}</td>
+          <td>{{item.identidad}}</td>
+          <td>{{item.fecha_nac}}</td>
+          <td>{{item.nombres}}</td>
+          <td>{{item.apellidos}}</td>
+          <td>{{item.sexo}}</td>
+          <td>{{item.estado_civil}}</td>
+          <td>{{item.direccion}}</td>
+          <td>{{item.fecha_creacion}}</td>
+          <td>{{item.estado}}</td>
+        <td><button class="btn btn-danger" (click)="deleteEmployee(item.idemp)">Eliminar</button></td>
+        <td><button class="btn btn-success" [routerLink]="['/employees/edit', item.idemp]">Actualizar</button></td>
+      </tr>
+    </tbody>
+  </table>
 </div>

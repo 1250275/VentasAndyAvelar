@@ -1,0 +1,59 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a href="/" class="navbar-brand">ACTUALIZAR CLIENTES</a>
+</nav>
+
+<div class="card mt-4">
+  <div class="card-body">
+  <form #f="ngForm" (ngSubmit)="updateCustomer()" novalidate>
+    <div class="row">
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Empresa (id) *</label>
+        <input type="number" [(ngModel)]="customer.idempresa" name="idempresa" class="form-control" placeholder="EMPRESA (ID)" required>
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Sucursal (id) *</label>
+        <input type="number" [(ngModel)]="customer.idsuc" name="idsuc" class="form-control" placeholder="SUCURSAL (ID)" required>
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Identidad</label>
+        <input type="text" [(ngModel)]="customer.identidad" name="identidad" class="form-control" placeholder="IDENTIDAD">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">RTN</label>
+        <input type="text" [(ngModel)]="customer.rtn" name="rtn" class="form-control" placeholder="RTN">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Fecha nacimiento</label>
+        <input type="date" [(ngModel)]="customer.fecha_nac" name="fecha_nac" class="form-control">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Nombre</label>
+        <input type="text" [(ngModel)]="customer.nombre" name="nombre" class="form-control" placeholder="NOMBRE">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Teléfono</label>
+        <input type="text" [(ngModel)]="customer.telefono" name="telefono" class="form-control" placeholder="TELÉFONO">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Dirección</label>
+        <input type="text" [(ngModel)]="customer.direccion" name="direccion" class="form-control" placeholder="DIRECCIÓN">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Correo</label>
+        <input type="email" [(ngModel)]="customer.correo" name="correo" class="form-control" placeholder="CORREO">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Fecha creación</label>
+        <input type="date" [(ngModel)]="customer.fecha_creacion" name="fecha_creacion" class="form-control">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label class="control-label">Estado</label>
+        <input type="text" [(ngModel)]="customer.estado" name="estado" class="form-control" placeholder="ESTADO">
+      </div>
+    </div>
+    <div *ngIf="f.submitted && f.invalid" class="alert alert-warning">Complete los campos obligatorios (*)</div>
+    <button type="submit" class="btn btn-success" [disabled]="f.invalid">Actualizar</button>
+  </form>
+    <a routerLink="/customers" class="btn btn-secondary mt-2">Cancelar</a>
+  </div>
+</div>
