@@ -13,9 +13,16 @@ export class EmployeeComponent implements OnInit {
 
   employee: Employee = this.newEmployee();
 
+  companyList: any = [];
+  branchList: any = [];
+  workAreaList: any = [];
+
   constructor(private Data: DataService) { }
 
   ngOnInit(): void {
+    this.getDropListCompanyList();
+    this.getDropListBranchList();
+    this.getDropListWorkAreaList();
     this.getEmployees();
   }
 
@@ -35,6 +42,24 @@ export class EmployeeComponent implements OnInit {
       fecha_creacion: null,
       estado: 'Activo'
     };
+  }
+
+  getDropListCompanyList() {
+    this.Data.getDropList('/companies').subscribe((data: any) => {
+      this.companyList = data;
+    });
+  }
+
+  getDropListBranchList() {
+    this.Data.getDropList('/branches').subscribe((data: any) => {
+      this.branchList = data;
+    });
+  }
+
+  getDropListWorkAreaList() {
+    this.Data.getDropList('/work-areas').subscribe((data: any) => {
+      this.workAreaList = data;
+    });
   }
 
   getEmployees() {

@@ -7,36 +7,57 @@
   <form #f="ngForm" (ngSubmit)="addAccountReceivable()" novalidate>
     <div class="row">
       <div class="form-group col-md-4 mb-3">
-        <label class="control-label">Empresa (id) *</label>
-        <input type="number" [(ngModel)]="accountReceivable.idempresa" name="idempresa" class="form-control" placeholder="EMPRESA (ID)" required>
+        <label class="control-label">Empresa *</label>
+        <select [(ngModel)]="accountReceivable.idempresa" name="idempresa" class="form-control" required>
+          <option [ngValue]="null">-- Seleccione empresa --</option>
+          <option *ngFor="let x of companyList" [ngValue]="x.idempresa">{{x.nombre}}</option>
+        </select>
       </div>
       <div class="form-group col-md-4 mb-3">
-        <label class="control-label">Venta (no.) *</label>
-        <input type="number" [(ngModel)]="accountReceivable.num_venta" name="num_venta" class="form-control" placeholder="VENTA (NO.)" required>
+        <label class="control-label">Venta *</label>
+        <select [(ngModel)]="accountReceivable.num_venta" name="num_venta" class="form-control" required>
+          <option [ngValue]="null">-- Seleccione venta --</option>
+          <option *ngFor="let x of saleHeaderList" [ngValue]="x.num_venta">Venta {{x.num_venta}} - {{x.fecha_venta}}</option>
+        </select>
       </div>
       <div class="form-group col-md-4 mb-3">
-        <label class="control-label">Sucursal (id) *</label>
-        <input type="number" [(ngModel)]="accountReceivable.idsuc" name="idsuc" class="form-control" placeholder="SUCURSAL (ID)" required>
+        <label class="control-label">Sucursal *</label>
+        <select [(ngModel)]="accountReceivable.idsuc" name="idsuc" class="form-control" required>
+          <option [ngValue]="null">-- Seleccione sucursal --</option>
+          <option *ngFor="let x of branchList" [ngValue]="x.idsuc">{{x.sucursal}}</option>
+        </select>
       </div>
       <div class="form-group col-md-4 mb-3">
-        <label class="control-label">Cliente (id) *</label>
-        <input type="number" [(ngModel)]="accountReceivable.num_clie" name="num_clie" class="form-control" placeholder="CLIENTE (ID)" required>
+        <label class="control-label">Cliente *</label>
+        <select [(ngModel)]="accountReceivable.num_clie" name="num_clie" class="form-control" required>
+          <option [ngValue]="null">-- Seleccione cliente --</option>
+          <option *ngFor="let x of customerList" [ngValue]="x.num_clie">{{x.nombre}}</option>
+        </select>
       </div>
       <div class="form-group col-md-4 mb-3">
-        <label class="control-label">Usuario (id) *</label>
-        <input type="number" [(ngModel)]="accountReceivable.userid" name="userid" class="form-control" placeholder="USUARIO (ID)" required>
+        <label class="control-label">Usuario *</label>
+        <select [(ngModel)]="accountReceivable.userid" name="userid" class="form-control" required>
+          <option [ngValue]="null">-- Seleccione usuario --</option>
+          <option *ngFor="let x of userList" [ngValue]="x.userid">{{x.usuario}}</option>
+        </select>
       </div>
       <div class="form-group col-md-4 mb-3">
-        <label class="control-label">Forma de pago (id) *</label>
-        <input type="number" [(ngModel)]="accountReceivable.idfpago" name="idfpago" class="form-control" placeholder="FORMA DE PAGO (ID)" required>
+        <label class="control-label">Forma de pago *</label>
+        <select [(ngModel)]="accountReceivable.idfpago" name="idfpago" class="form-control" required>
+          <option [ngValue]="null">-- Seleccione forma de pago --</option>
+          <option *ngFor="let x of paymentMethodList" [ngValue]="x.idfpago">{{x.formapago}}</option>
+        </select>
       </div>
       <div class="form-group col-md-4 mb-3">
         <label class="control-label">Fecha venta</label>
         <input type="date" [(ngModel)]="accountReceivable.fecha_venta" name="fecha_venta" class="form-control">
       </div>
       <div class="form-group col-md-4 mb-3">
-        <label class="control-label">Producto (id) *</label>
-        <input type="number" [(ngModel)]="accountReceivable.num_prod" name="num_prod" class="form-control" placeholder="PRODUCTO (ID)" required>
+        <label class="control-label">Producto *</label>
+        <select [(ngModel)]="accountReceivable.num_prod" name="num_prod" class="form-control" required>
+          <option [ngValue]="null">-- Seleccione producto --</option>
+          <option *ngFor="let x of productList" [ngValue]="x.num_prod">{{x.descripcion}} - {{x.presentacion}}</option>
+        </select>
       </div>
       <div class="form-group col-md-4 mb-3">
         <label class="control-label">Cantidad</label>
@@ -78,14 +99,14 @@
     <thead>
       <tr>
           <th>NO</th>
-          <th>EMPRESA (ID)</th>
-          <th>VENTA (NO.)</th>
-          <th>SUCURSAL (ID)</th>
-          <th>CLIENTE (ID)</th>
-          <th>USUARIO (ID)</th>
-          <th>FORMA DE PAGO (ID)</th>
+          <th>EMPRESA</th>
+          <th>VENTA</th>
+          <th>SUCURSAL</th>
+          <th>CLIENTE</th>
+          <th>USUARIO</th>
+          <th>FORMA DE PAGO</th>
           <th>FECHA VENTA</th>
-          <th>PRODUCTO (ID)</th>
+          <th>PRODUCTO</th>
           <th>CANTIDAD</th>
           <th>PRECIO</th>
           <th>ISV</th>

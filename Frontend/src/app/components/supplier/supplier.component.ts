@@ -13,9 +13,12 @@ export class SupplierComponent implements OnInit {
 
   supplier: Supplier = this.newSupplier();
 
+  companyList: any = [];
+
   constructor(private Data: DataService) { }
 
   ngOnInit(): void {
+    this.getDropListCompanyList();
     this.getSuppliers();
   }
 
@@ -31,6 +34,12 @@ export class SupplierComponent implements OnInit {
       observaciones: null,
       estado: 'Activo'
     };
+  }
+
+  getDropListCompanyList() {
+    this.Data.getDropList('/companies').subscribe((data: any) => {
+      this.companyList = data;
+    });
   }
 
   getSuppliers() {

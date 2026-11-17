@@ -26,11 +26,18 @@ export class ProductEditComponent implements OnInit {
       estado: 'Activo'
     };
 
+  companyList: any = [];
+  branchList: any = [];
+  productTypeList: any = [];
+
   constructor(private Data: DataService,
     private router: Router,
     private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.getDropListCompanyList();
+    this.getDropListBranchList();
+    this.getDropListProductTypeList();
     const params = this.activatedRoute.snapshot.params;
 
     if (params['id']) {
@@ -42,6 +49,24 @@ export class ProductEditComponent implements OnInit {
           err => console.error(err)
         );
     }
+  }
+
+  getDropListCompanyList() {
+    this.Data.getDropList('/companies').subscribe((data: any) => {
+      this.companyList = data;
+    });
+  }
+
+  getDropListBranchList() {
+    this.Data.getDropList('/branches').subscribe((data: any) => {
+      this.branchList = data;
+    });
+  }
+
+  getDropListProductTypeList() {
+    this.Data.getDropList('/product-types').subscribe((data: any) => {
+      this.productTypeList = data;
+    });
   }
 
   updateProduct() {

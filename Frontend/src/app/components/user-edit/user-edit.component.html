@@ -7,20 +7,32 @@
   <form #f="ngForm" (ngSubmit)="updateUser()" novalidate>
     <div class="row">
       <div class="form-group col-md-4 mb-3">
-        <label class="control-label">Empresa (id) *</label>
-        <input type="number" [(ngModel)]="user.idempresa" name="idempresa" class="form-control" placeholder="EMPRESA (ID)" required>
+        <label class="control-label">Empresa *</label>
+        <select [(ngModel)]="user.idempresa" name="idempresa" class="form-control" required>
+          <option [ngValue]="null">-- Seleccione empresa --</option>
+          <option *ngFor="let x of companyList" [ngValue]="x.idempresa">{{x.nombre}}</option>
+        </select>
       </div>
       <div class="form-group col-md-4 mb-3">
-        <label class="control-label">Sucursal (id) *</label>
-        <input type="number" [(ngModel)]="user.idsuc" name="idsuc" class="form-control" placeholder="SUCURSAL (ID)" required>
+        <label class="control-label">Sucursal *</label>
+        <select [(ngModel)]="user.idsuc" name="idsuc" class="form-control" required>
+          <option [ngValue]="null">-- Seleccione sucursal --</option>
+          <option *ngFor="let x of branchList" [ngValue]="x.idsuc">{{x.sucursal}}</option>
+        </select>
       </div>
       <div class="form-group col-md-4 mb-3">
-        <label class="control-label">Tipo de usuario (id) *</label>
-        <input type="number" [(ngModel)]="user.idtpusuario" name="idtpusuario" class="form-control" placeholder="TIPO DE USUARIO (ID)" required>
+        <label class="control-label">Tipo de usuario *</label>
+        <select [(ngModel)]="user.idtpusuario" name="idtpusuario" class="form-control" required>
+          <option [ngValue]="null">-- Seleccione tipo de usuario --</option>
+          <option *ngFor="let x of userTypeList" [ngValue]="x.idtpusuario">{{x.tipo}}</option>
+        </select>
       </div>
       <div class="form-group col-md-4 mb-3">
-        <label class="control-label">Empleado (id) *</label>
-        <input type="number" [(ngModel)]="user.idemp" name="idemp" class="form-control" placeholder="EMPLEADO (ID)" required>
+        <label class="control-label">Empleado *</label>
+        <select [(ngModel)]="user.idemp" name="idemp" class="form-control" required>
+          <option [ngValue]="null">-- Seleccione empleado --</option>
+          <option *ngFor="let x of employeeList" [ngValue]="x.idemp">{{x.nombres}} {{x.apellidos}}</option>
+        </select>
       </div>
       <div class="form-group col-md-4 mb-3">
         <label class="control-label">Usuario *</label>

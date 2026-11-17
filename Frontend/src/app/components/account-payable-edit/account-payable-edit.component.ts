@@ -29,11 +29,26 @@ export class AccountPayableEditComponent implements OnInit {
       estado: 'Activo'
     };
 
+  purchaseHeaderList: any = [];
+  companyList: any = [];
+  branchList: any = [];
+  supplierList: any = [];
+  userList: any = [];
+  paymentMethodList: any = [];
+  productList: any = [];
+
   constructor(private Data: DataService,
     private router: Router,
     private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.getDropListPurchaseHeaderList();
+    this.getDropListCompanyList();
+    this.getDropListBranchList();
+    this.getDropListSupplierList();
+    this.getDropListUserList();
+    this.getDropListPaymentMethodList();
+    this.getDropListProductList();
     const params = this.activatedRoute.snapshot.params;
 
     if (params['id']) {
@@ -45,6 +60,48 @@ export class AccountPayableEditComponent implements OnInit {
           err => console.error(err)
         );
     }
+  }
+
+  getDropListPurchaseHeaderList() {
+    this.Data.getDropList('/purchase-headers').subscribe((data: any) => {
+      this.purchaseHeaderList = data;
+    });
+  }
+
+  getDropListCompanyList() {
+    this.Data.getDropList('/companies').subscribe((data: any) => {
+      this.companyList = data;
+    });
+  }
+
+  getDropListBranchList() {
+    this.Data.getDropList('/branches').subscribe((data: any) => {
+      this.branchList = data;
+    });
+  }
+
+  getDropListSupplierList() {
+    this.Data.getDropList('/suppliers').subscribe((data: any) => {
+      this.supplierList = data;
+    });
+  }
+
+  getDropListUserList() {
+    this.Data.getDropList('/users').subscribe((data: any) => {
+      this.userList = data;
+    });
+  }
+
+  getDropListPaymentMethodList() {
+    this.Data.getDropList('/payment-methods').subscribe((data: any) => {
+      this.paymentMethodList = data;
+    });
+  }
+
+  getDropListProductList() {
+    this.Data.getDropList('/products').subscribe((data: any) => {
+      this.productList = data;
+    });
   }
 
   updateAccountPayable() {

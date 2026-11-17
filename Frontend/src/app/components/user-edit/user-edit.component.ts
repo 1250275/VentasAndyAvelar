@@ -21,11 +21,20 @@ export class UserEditComponent implements OnInit {
       estado: 'Activo'
     };
 
+  companyList: any = [];
+  branchList: any = [];
+  userTypeList: any = [];
+  employeeList: any = [];
+
   constructor(private Data: DataService,
     private router: Router,
     private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.getDropListCompanyList();
+    this.getDropListBranchList();
+    this.getDropListUserTypeList();
+    this.getDropListEmployeeList();
     const params = this.activatedRoute.snapshot.params;
 
     if (params['id']) {
@@ -37,6 +46,30 @@ export class UserEditComponent implements OnInit {
           err => console.error(err)
         );
     }
+  }
+
+  getDropListCompanyList() {
+    this.Data.getDropList('/companies').subscribe((data: any) => {
+      this.companyList = data;
+    });
+  }
+
+  getDropListBranchList() {
+    this.Data.getDropList('/branches').subscribe((data: any) => {
+      this.branchList = data;
+    });
+  }
+
+  getDropListUserTypeList() {
+    this.Data.getDropList('/user-types').subscribe((data: any) => {
+      this.userTypeList = data;
+    });
+  }
+
+  getDropListEmployeeList() {
+    this.Data.getDropList('/employees').subscribe((data: any) => {
+      this.employeeList = data;
+    });
   }
 
   updateUser() {

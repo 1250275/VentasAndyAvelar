@@ -7,16 +7,25 @@
   <form #f="ngForm" (ngSubmit)="addProduct()" novalidate>
     <div class="row">
       <div class="form-group col-md-4 mb-3">
-        <label class="control-label">Empresa (id) *</label>
-        <input type="number" [(ngModel)]="product.idempresa" name="idempresa" class="form-control" placeholder="EMPRESA (ID)" required>
+        <label class="control-label">Empresa *</label>
+        <select [(ngModel)]="product.idempresa" name="idempresa" class="form-control" required>
+          <option [ngValue]="null">-- Seleccione empresa --</option>
+          <option *ngFor="let x of companyList" [ngValue]="x.idempresa">{{x.nombre}}</option>
+        </select>
       </div>
       <div class="form-group col-md-4 mb-3">
-        <label class="control-label">Sucursal (id) *</label>
-        <input type="number" [(ngModel)]="product.idsuc" name="idsuc" class="form-control" placeholder="SUCURSAL (ID)" required>
+        <label class="control-label">Sucursal *</label>
+        <select [(ngModel)]="product.idsuc" name="idsuc" class="form-control" required>
+          <option [ngValue]="null">-- Seleccione sucursal --</option>
+          <option *ngFor="let x of branchList" [ngValue]="x.idsuc">{{x.sucursal}}</option>
+        </select>
       </div>
       <div class="form-group col-md-4 mb-3">
-        <label class="control-label">Tipo de producto (id) *</label>
-        <input type="number" [(ngModel)]="product.idtpprod" name="idtpprod" class="form-control" placeholder="TIPO DE PRODUCTO (ID)" required>
+        <label class="control-label">Tipo de producto *</label>
+        <select [(ngModel)]="product.idtpprod" name="idtpprod" class="form-control" required>
+          <option [ngValue]="null">-- Seleccione tipo de producto --</option>
+          <option *ngFor="let x of productTypeList" [ngValue]="x.idtpprod">{{x.tipo}}</option>
+        </select>
       </div>
       <div class="form-group col-md-4 mb-3">
         <label class="control-label">Descripción</label>
@@ -66,9 +75,9 @@
     <thead>
       <tr>
           <th>NO</th>
-          <th>EMPRESA (ID)</th>
-          <th>SUCURSAL (ID)</th>
-          <th>TIPO DE PRODUCTO (ID)</th>
+          <th>EMPRESA</th>
+          <th>SUCURSAL</th>
+          <th>TIPO DE PRODUCTO</th>
           <th>DESCRIPCIÓN</th>
           <th>PRESENTACIÓN</th>
           <th>MARCA</th>

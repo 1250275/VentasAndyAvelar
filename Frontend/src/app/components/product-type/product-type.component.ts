@@ -13,9 +13,12 @@ export class ProductTypeComponent implements OnInit {
 
   productType: ProductType = this.newProductType();
 
+  companyList: any = [];
+
   constructor(private Data: DataService) { }
 
   ngOnInit(): void {
+    this.getDropListCompanyList();
     this.getProductTypes();
   }
 
@@ -26,6 +29,12 @@ export class ProductTypeComponent implements OnInit {
       tipo: null,
       estado: 'Activo'
     };
+  }
+
+  getDropListCompanyList() {
+    this.Data.getDropList('/companies').subscribe((data: any) => {
+      this.companyList = data;
+    });
   }
 
   getProductTypes() {

@@ -7,16 +7,25 @@
   <form #f="ngForm" (ngSubmit)="addEmployee()" novalidate>
     <div class="row">
       <div class="form-group col-md-4 mb-3">
-        <label class="control-label">Empresa (id) *</label>
-        <input type="number" [(ngModel)]="employee.idempresa" name="idempresa" class="form-control" placeholder="EMPRESA (ID)" required>
+        <label class="control-label">Empresa *</label>
+        <select [(ngModel)]="employee.idempresa" name="idempresa" class="form-control" required>
+          <option [ngValue]="null">-- Seleccione empresa --</option>
+          <option *ngFor="let x of companyList" [ngValue]="x.idempresa">{{x.nombre}}</option>
+        </select>
       </div>
       <div class="form-group col-md-4 mb-3">
-        <label class="control-label">Sucursal (id) *</label>
-        <input type="number" [(ngModel)]="employee.idsuc" name="idsuc" class="form-control" placeholder="SUCURSAL (ID)" required>
+        <label class="control-label">Sucursal *</label>
+        <select [(ngModel)]="employee.idsuc" name="idsuc" class="form-control" required>
+          <option [ngValue]="null">-- Seleccione sucursal --</option>
+          <option *ngFor="let x of branchList" [ngValue]="x.idsuc">{{x.sucursal}}</option>
+        </select>
       </div>
       <div class="form-group col-md-4 mb-3">
-        <label class="control-label">Área (id) *</label>
-        <input type="number" [(ngModel)]="employee.idarea" name="idarea" class="form-control" placeholder="ÁREA (ID)" required>
+        <label class="control-label">Área *</label>
+        <select [(ngModel)]="employee.idarea" name="idarea" class="form-control" required>
+          <option [ngValue]="null">-- Seleccione área --</option>
+          <option *ngFor="let x of workAreaList" [ngValue]="x.idarea">{{x.area}}</option>
+        </select>
       </div>
       <div class="form-group col-md-4 mb-3">
         <label class="control-label">Identidad</label>
@@ -75,9 +84,9 @@
     <thead>
       <tr>
           <th>NO</th>
-          <th>EMPRESA (ID)</th>
-          <th>SUCURSAL (ID)</th>
-          <th>ÁREA (ID)</th>
+          <th>EMPRESA</th>
+          <th>SUCURSAL</th>
+          <th>ÁREA</th>
           <th>IDENTIDAD</th>
           <th>FECHA NACIMIENTO</th>
           <th>NOMBRES</th>

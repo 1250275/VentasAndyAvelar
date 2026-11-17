@@ -13,9 +13,12 @@ export class UserTypeComponent implements OnInit {
 
   userType: UserType = this.newUserType();
 
+  companyList: any = [];
+
   constructor(private Data: DataService) { }
 
   ngOnInit(): void {
+    this.getDropListCompanyList();
     this.getUserTypes();
   }
 
@@ -26,6 +29,12 @@ export class UserTypeComponent implements OnInit {
       tipo: null,
       estado: 'Activo'
     };
+  }
+
+  getDropListCompanyList() {
+    this.Data.getDropList('/companies').subscribe((data: any) => {
+      this.companyList = data;
+    });
   }
 
   getUserTypes() {

@@ -13,9 +13,12 @@ export class PaymentMethodComponent implements OnInit {
 
   paymentMethod: PaymentMethod = this.newPaymentMethod();
 
+  companyList: any = [];
+
   constructor(private Data: DataService) { }
 
   ngOnInit(): void {
+    this.getDropListCompanyList();
     this.getPaymentMethods();
   }
 
@@ -26,6 +29,12 @@ export class PaymentMethodComponent implements OnInit {
       formapago: null,
       estado: 'Activo'
     };
+  }
+
+  getDropListCompanyList() {
+    this.Data.getDropList('/companies').subscribe((data: any) => {
+      this.companyList = data;
+    });
   }
 
   getPaymentMethods() {

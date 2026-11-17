@@ -13,9 +13,16 @@ export class ProductComponent implements OnInit {
 
   product: Product = this.newProduct();
 
+  companyList: any = [];
+  branchList: any = [];
+  productTypeList: any = [];
+
   constructor(private Data: DataService) { }
 
   ngOnInit(): void {
+    this.getDropListCompanyList();
+    this.getDropListBranchList();
+    this.getDropListProductTypeList();
     this.getProducts();
   }
 
@@ -35,6 +42,24 @@ export class ProductComponent implements OnInit {
       fecha_actualiza: null,
       estado: 'Activo'
     };
+  }
+
+  getDropListCompanyList() {
+    this.Data.getDropList('/companies').subscribe((data: any) => {
+      this.companyList = data;
+    });
+  }
+
+  getDropListBranchList() {
+    this.Data.getDropList('/branches').subscribe((data: any) => {
+      this.branchList = data;
+    });
+  }
+
+  getDropListProductTypeList() {
+    this.Data.getDropList('/product-types').subscribe((data: any) => {
+      this.productTypeList = data;
+    });
   }
 
   getProducts() {

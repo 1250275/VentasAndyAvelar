@@ -44,9 +44,14 @@
   </form>
   </div>
 </div>
+<button (click)="exportToExcel()" class="btn btn-secondary">Exportar a Excel</button>
+ <button class="btn btn-dark" (click)="openPDF()">Descargar PDF</button>`
 
+<div class="form-group">
+          <input type="text" class="form-control" name="filterPost" placeholder="Digite la Empresa que desea Buscar" [(ngModel)]="filterPost">
+        </div>
 <div class="table-responsive mt-4">
-  <table class="table table-bordered table-hover">
+  <table class="table table-bordered table-hover" id="tabla">
     <thead>
       <tr>
           <th>NO</th>
@@ -63,7 +68,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of companies">
+      <tr *ngFor="let item of companies | companyFilter:filterPost">
           <td>{{item.idempresa}}</td>
           <td>{{item.nombre}}</td>
           <td>{{item.direccion}}</td>

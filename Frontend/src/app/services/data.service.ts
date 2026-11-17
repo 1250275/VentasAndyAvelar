@@ -20,6 +20,11 @@ export class DataService {
     return this.http.get<any>(`${this.API_URI}` + url + `/${id}`);
   }
 
+  // Llena los dropdownlist de las llaves foráneas (ej. '/companies' para idempresa)
+  getDropList(url: string): Observable<any[]> {
+    return this.http.get<any[]>(this.API_URI + url);
+  }
+
   delete(id: number, url: string) {
     return this.http.delete(`${this.API_URI}` + url + `/${id}`);
   }

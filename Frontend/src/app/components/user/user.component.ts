@@ -13,9 +13,18 @@ export class UserComponent implements OnInit {
 
   user: User = this.newUser();
 
+  companyList: any = [];
+  branchList: any = [];
+  userTypeList: any = [];
+  employeeList: any = [];
+
   constructor(private Data: DataService) { }
 
   ngOnInit(): void {
+    this.getDropListCompanyList();
+    this.getDropListBranchList();
+    this.getDropListUserTypeList();
+    this.getDropListEmployeeList();
     this.getUsers();
   }
 
@@ -30,6 +39,30 @@ export class UserComponent implements OnInit {
       clave: null,
       estado: 'Activo'
     };
+  }
+
+  getDropListCompanyList() {
+    this.Data.getDropList('/companies').subscribe((data: any) => {
+      this.companyList = data;
+    });
+  }
+
+  getDropListBranchList() {
+    this.Data.getDropList('/branches').subscribe((data: any) => {
+      this.branchList = data;
+    });
+  }
+
+  getDropListUserTypeList() {
+    this.Data.getDropList('/user-types').subscribe((data: any) => {
+      this.userTypeList = data;
+    });
+  }
+
+  getDropListEmployeeList() {
+    this.Data.getDropList('/employees').subscribe((data: any) => {
+      this.employeeList = data;
+    });
   }
 
   getUsers() {

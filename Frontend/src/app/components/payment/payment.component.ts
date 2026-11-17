@@ -13,9 +13,24 @@ export class PaymentComponent implements OnInit {
 
   payment: Payment = this.newPayment();
 
+  companyList: any = [];
+  saleHeaderList: any = [];
+  branchList: any = [];
+  customerList: any = [];
+  userList: any = [];
+  paymentMethodList: any = [];
+  productList: any = [];
+
   constructor(private Data: DataService) { }
 
   ngOnInit(): void {
+    this.getDropListCompanyList();
+    this.getDropListSaleHeaderList();
+    this.getDropListBranchList();
+    this.getDropListCustomerList();
+    this.getDropListUserList();
+    this.getDropListPaymentMethodList();
+    this.getDropListProductList();
     this.getPayments();
   }
 
@@ -37,6 +52,48 @@ export class PaymentComponent implements OnInit {
       total: null,
       estado: 'Activo'
     };
+  }
+
+  getDropListCompanyList() {
+    this.Data.getDropList('/companies').subscribe((data: any) => {
+      this.companyList = data;
+    });
+  }
+
+  getDropListSaleHeaderList() {
+    this.Data.getDropList('/sale-headers').subscribe((data: any) => {
+      this.saleHeaderList = data;
+    });
+  }
+
+  getDropListBranchList() {
+    this.Data.getDropList('/branches').subscribe((data: any) => {
+      this.branchList = data;
+    });
+  }
+
+  getDropListCustomerList() {
+    this.Data.getDropList('/customers').subscribe((data: any) => {
+      this.customerList = data;
+    });
+  }
+
+  getDropListUserList() {
+    this.Data.getDropList('/users').subscribe((data: any) => {
+      this.userList = data;
+    });
+  }
+
+  getDropListPaymentMethodList() {
+    this.Data.getDropList('/payment-methods').subscribe((data: any) => {
+      this.paymentMethodList = data;
+    });
+  }
+
+  getDropListProductList() {
+    this.Data.getDropList('/products').subscribe((data: any) => {
+      this.productList = data;
+    });
   }
 
   getPayments() {

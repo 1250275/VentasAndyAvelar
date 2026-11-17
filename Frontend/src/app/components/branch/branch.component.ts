@@ -13,9 +13,12 @@ export class BranchComponent implements OnInit {
 
   branch: Branch = this.newBranch();
 
+  companyList: any = [];
+
   constructor(private Data: DataService) { }
 
   ngOnInit(): void {
+    this.getDropListCompanyList();
     this.getBranches();
   }
 
@@ -28,6 +31,12 @@ export class BranchComponent implements OnInit {
       telefono: null,
       estado: 'Activo'
     };
+  }
+
+  getDropListCompanyList() {
+    this.Data.getDropList('/companies').subscribe((data: any) => {
+      this.companyList = data;
+    });
   }
 
   getBranches() {

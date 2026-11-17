@@ -1,11 +1,15 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DataService } from './services/data.service';
+import { NavigationComponent } from './components/navigation/navigation.component';
 import { CompanyComponent } from './components/company/company.component';
 import { CompanyEditComponent } from './components/company-edit/company-edit.component';
 import { BranchComponent } from './components/branch/branch.component';
@@ -34,10 +38,12 @@ import { AccountPayableComponent } from './components/account-payable/account-pa
 import { AccountPayableEditComponent } from './components/account-payable-edit/account-payable-edit.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { PaymentEditComponent } from './components/payment-edit/payment-edit.component';
+import { CompanyFilterPipe } from './pipes/company-filter.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
+    NavigationComponent,
     CompanyComponent,
     CompanyEditComponent,
     BranchComponent,
@@ -65,13 +71,17 @@ import { PaymentEditComponent } from './components/payment-edit/payment-edit.com
     AccountPayableComponent,
     AccountPayableEditComponent,
     PaymentComponent,
-    PaymentEditComponent
+    PaymentEditComponent,
+    CompanyFilterPipe
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatButtonModule,
+    MatMenuModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

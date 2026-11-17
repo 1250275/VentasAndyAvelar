@@ -26,11 +26,18 @@ export class EmployeeEditComponent implements OnInit {
       estado: 'Activo'
     };
 
+  companyList: any = [];
+  branchList: any = [];
+  workAreaList: any = [];
+
   constructor(private Data: DataService,
     private router: Router,
     private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.getDropListCompanyList();
+    this.getDropListBranchList();
+    this.getDropListWorkAreaList();
     const params = this.activatedRoute.snapshot.params;
 
     if (params['id']) {
@@ -42,6 +49,24 @@ export class EmployeeEditComponent implements OnInit {
           err => console.error(err)
         );
     }
+  }
+
+  getDropListCompanyList() {
+    this.Data.getDropList('/companies').subscribe((data: any) => {
+      this.companyList = data;
+    });
+  }
+
+  getDropListBranchList() {
+    this.Data.getDropList('/branches').subscribe((data: any) => {
+      this.branchList = data;
+    });
+  }
+
+  getDropListWorkAreaList() {
+    this.Data.getDropList('/work-areas').subscribe((data: any) => {
+      this.workAreaList = data;
+    });
   }
 
   updateEmployee() {

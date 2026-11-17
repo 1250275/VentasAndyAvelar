@@ -13,9 +13,14 @@ export class CustomerComponent implements OnInit {
 
   customer: Customer = this.newCustomer();
 
+  companyList: any = [];
+  branchList: any = [];
+
   constructor(private Data: DataService) { }
 
   ngOnInit(): void {
+    this.getDropListCompanyList();
+    this.getDropListBranchList();
     this.getCustomers();
   }
 
@@ -34,6 +39,18 @@ export class CustomerComponent implements OnInit {
       fecha_creacion: null,
       estado: 'Activo'
     };
+  }
+
+  getDropListCompanyList() {
+    this.Data.getDropList('/companies').subscribe((data: any) => {
+      this.companyList = data;
+    });
+  }
+
+  getDropListBranchList() {
+    this.Data.getDropList('/branches').subscribe((data: any) => {
+      this.branchList = data;
+    });
   }
 
   getCustomers() {

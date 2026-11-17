@@ -19,11 +19,14 @@ export class BranchEditComponent implements OnInit {
       estado: 'Activo'
     };
 
+  companyList: any = [];
+
   constructor(private Data: DataService,
     private router: Router,
     private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.getDropListCompanyList();
     const params = this.activatedRoute.snapshot.params;
 
     if (params['id']) {
@@ -35,6 +38,12 @@ export class BranchEditComponent implements OnInit {
           err => console.error(err)
         );
     }
+  }
+
+  getDropListCompanyList() {
+    this.Data.getDropList('/companies').subscribe((data: any) => {
+      this.companyList = data;
+    });
   }
 
   updateBranch() {

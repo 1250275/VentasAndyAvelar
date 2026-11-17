@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container flex-wrap">
+    <a class="navbar-brand" routerLink="/">VENTAS</a>
+
+    <!-- Opciones del menú principal -->
+    <button mat-button [matMenuTriggerFor]="menu1">Catálogos</button>
+    <mat-menu #menu1="matMenu">
+      <button mat-menu-item [matMenuTriggerFor]="subMenu11">Empresa</button>
+      <button mat-menu-item [matMenuTriggerFor]="subMenu12">Productos</button>
+      <button mat-menu-item [matMenuTriggerFor]="subMenu13">Clientes</button>
+    </mat-menu>
+
+    <button mat-button [matMenuTriggerFor]="menu2">Seguridad</button>
+    <mat-menu #menu2="matMenu">
+      <button mat-menu-item [matMenuTriggerFor]="subMenu21">Usuarios</button>
+    </mat-menu>
+
+    <button mat-button [matMenuTriggerFor]="menu3">Cuentas</button>
+    <mat-menu #menu3="matMenu">
+      <button mat-menu-item [matMenuTriggerFor]="subMenu31">Por cobrar</button>
+      <button mat-menu-item [matMenuTriggerFor]="subMenu32">Por pagar</button>
+    </mat-menu>
+
+    <!-- Submenús -->
+    <mat-menu #subMenu11="matMenu">
+      <a mat-menu-item routerLink="/companies">Empresas</a>
+      <a mat-menu-item routerLink="/branches">Sucursales</a>
+      <a mat-menu-item routerLink="/work-areas">Áreas de trabajo</a>
+      <a mat-menu-item routerLink="/employees">Empleados</a>
+    </mat-menu>
+    <mat-menu #subMenu12="matMenu">
+      <a mat-menu-item routerLink="/product-types">Tipos de producto</a>
+      <a mat-menu-item routerLink="/products">Productos</a>
+      <a mat-menu-item routerLink="/suppliers">Proveedores</a>
+    </mat-menu>
+    <mat-menu #subMenu13="matMenu">
+      <a mat-menu-item routerLink="/customers">Clientes</a>
+      <a mat-menu-item routerLink="/payment-methods">Formas de pago</a>
+    </mat-menu>
+    <mat-menu #subMenu21="matMenu">
+      <a mat-menu-item routerLink="/user-types">Tipos de usuario</a>
+      <a mat-menu-item routerLink="/users">Usuarios</a>
+    </mat-menu>
+    <mat-menu #subMenu31="matMenu">
+      <a mat-menu-item routerLink="/accounts-receivable">Cuentas por cobrar</a>
+      <a mat-menu-item routerLink="/payments">Pagos</a>
+    </mat-menu>
+    <mat-menu #subMenu32="matMenu">
+      <a mat-menu-item routerLink="/accounts-payable">Cuentas por pagar</a>
+    </mat-menu>
+  </div>
+</nav>
