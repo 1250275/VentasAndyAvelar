@@ -20,3 +20,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   -webkit-appearance: none;
   appearance: none;
 }
+
+/* Botones de exportar (Excel / PDF) */
+.btn-export {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  min-width: 96px;
+  justify-content: center;
+}
