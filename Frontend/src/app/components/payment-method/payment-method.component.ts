@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { PaymentMethod } from 'src/app/interfaces/user';
 import { DataService } from '../../services/data.service';
 
@@ -10,6 +10,9 @@ import { DataService } from '../../services/data.service';
 export class PaymentMethodComponent implements OnInit {
 
   paymentMethods: any = [];
+
+  @ViewChild('htmlData') htmlData!: ElementRef;
+  filterPost = '';
 
   paymentMethod: PaymentMethod = this.newPaymentMethod();
 

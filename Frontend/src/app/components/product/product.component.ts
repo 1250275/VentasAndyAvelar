@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Product } from 'src/app/interfaces/user';
 import { DataService } from '../../services/data.service';
 
@@ -10,6 +10,9 @@ import { DataService } from '../../services/data.service';
 export class ProductComponent implements OnInit {
 
   products: any = [];
+
+  @ViewChild('htmlData') htmlData!: ElementRef;
+  filterPost = '';
 
   product: Product = this.newProduct();
 

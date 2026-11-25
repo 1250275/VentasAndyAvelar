@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { AccountReceivable } from 'src/app/interfaces/user';
 import { DataService } from '../../services/data.service';
 
@@ -10,6 +10,9 @@ import { DataService } from '../../services/data.service';
 export class AccountReceivableComponent implements OnInit {
 
   accountsReceivable: any = [];
+
+  @ViewChild('htmlData') htmlData!: ElementRef;
+  filterPost = '';
 
   accountReceivable: AccountReceivable = this.newAccountReceivable();
 

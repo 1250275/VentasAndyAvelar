@@ -1,4 +1,4 @@
-import { Component, OnInit,ViewChild, ElementRef  } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Company } from 'src/app/interfaces/user';
 import { DataService } from '../../services/data.service';
 import * as XLSX from 'xlsx';
@@ -20,7 +20,7 @@ export class CompanyComponent implements OnInit {
   constructor(private Data: DataService) { }
 
 
-@ViewChild('htmlData') htmlData!: ElementRef;
+  @ViewChild('htmlData') htmlData!: ElementRef;
   filterPost = '';
 
   ngOnInit(): void {

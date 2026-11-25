@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { UserType } from 'src/app/interfaces/user';
 import { DataService } from '../../services/data.service';
 
@@ -10,6 +10,9 @@ import { DataService } from '../../services/data.service';
 export class UserTypeComponent implements OnInit {
 
   userTypes: any = [];
+
+  @ViewChild('htmlData') htmlData!: ElementRef;
+  filterPost = '';
 
   userType: UserType = this.newUserType();
 

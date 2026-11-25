@@ -39,6 +39,19 @@ import { AccountPayableEditComponent } from './components/account-payable-edit/a
 import { PaymentComponent } from './components/payment/payment.component';
 import { PaymentEditComponent } from './components/payment-edit/payment-edit.component';
 import { CompanyFilterPipe } from './pipes/company-filter.pipe';
+import { BranchFilterPipe } from './pipes/branch-filter.pipe';
+import { SupplierFilterPipe } from './pipes/supplier-filter.pipe';
+import { WorkAreaFilterPipe } from './pipes/work-area-filter.pipe';
+import { EmployeeFilterPipe } from './pipes/employee-filter.pipe';
+import { UserTypeFilterPipe } from './pipes/user-type-filter.pipe';
+import { UserFilterPipe } from './pipes/user-filter.pipe';
+import { CustomerFilterPipe } from './pipes/customer-filter.pipe';
+import { ProductTypeFilterPipe } from './pipes/product-type-filter.pipe';
+import { ProductFilterPipe } from './pipes/product-filter.pipe';
+import { PaymentMethodFilterPipe } from './pipes/payment-method-filter.pipe';
+import { AccountReceivableFilterPipe } from './pipes/account-receivable-filter.pipe';
+import { AccountPayableFilterPipe } from './pipes/account-payable-filter.pipe';
+import { PaymentFilterPipe } from './pipes/payment-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -72,7 +85,20 @@ import { CompanyFilterPipe } from './pipes/company-filter.pipe';
     AccountPayableEditComponent,
     PaymentComponent,
     PaymentEditComponent,
-    CompanyFilterPipe
+    CompanyFilterPipe,
+    BranchFilterPipe,
+    SupplierFilterPipe,
+    WorkAreaFilterPipe,
+    EmployeeFilterPipe,
+    UserTypeFilterPipe,
+    UserFilterPipe,
+    CustomerFilterPipe,
+    ProductTypeFilterPipe,
+    ProductFilterPipe,
+    PaymentMethodFilterPipe,
+    AccountReceivableFilterPipe,
+    AccountPayableFilterPipe,
+    PaymentFilterPipe
   ],
   imports: [
     BrowserModule,

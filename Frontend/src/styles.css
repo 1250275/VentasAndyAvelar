@@ -2,3 +2,21 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Barra de búsqueda de las tablas */
+.search-box .input-group-text {
+  background-color: #fff;
+  color: #6c757d;
+}
+.search-box .form-control:focus {
+  box-shadow: none;
+}
+.search-box:focus-within {
+  border-radius: .375rem;
+  box-shadow: 0 0 0 .25rem rgba(13, 110, 253, .25);
+}
+/* se oculta la "x" nativa del navegador; se usa el botón Limpiar */
+.search-box input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+}

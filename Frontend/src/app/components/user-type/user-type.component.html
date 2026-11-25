@@ -28,7 +28,26 @@
   </div>
 </div>
 
-<div class="table-responsive mt-4">
+<div class="card mt-4 shadow-sm">
+  <div class="card-body py-3">
+    <div class="row g-2 align-items-center">
+      <div class="col-lg-6">
+        <div class="input-group search-box">
+          <span class="input-group-text">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85zm-5.242.656a5 5 0 1 1 0-10 5 5 0 0 1 0 10"/>
+            </svg>
+          </span>
+          <input type="search" class="form-control" name="filterPost" placeholder="Buscar tipo de usuario..." [(ngModel)]="filterPost" autocomplete="off">
+          <button *ngIf="filterPost" type="button" class="btn btn-outline-secondary" (click)="filterPost = ''">Limpiar</button>
+        </div>
+        <div class="form-text">Escriba al menos 3 caracteres para filtrar.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="table-responsive mt-3">
   <table class="table table-bordered table-hover">
     <thead>
       <tr>
@@ -41,7 +60,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of userTypes">
+      <ng-container *ngIf="(userTypes | userTypeFilter:filterPost) as rows">
+      <tr *ngFor="let item of rows">
           <td>{{item.idtpusuario}}</td>
           <td>{{item.idempresa}}</td>
           <td>{{item.tipo}}</td>
@@ -49,6 +69,10 @@
         <td><button class="btn btn-danger" (click)="deleteUserType(item.idtpusuario)">Eliminar</button></td>
         <td><button class="btn btn-success" [routerLink]="['/user-types/edit', item.idtpusuario]">Actualizar</button></td>
       </tr>
+      <tr *ngIf="rows.length === 0">
+        <td colspan="6" class="text-center text-muted py-4">No se encontraron registros<span *ngIf="filterPost"> para "{{ filterPost }}"</span>.</td>
+      </tr>
+      </ng-container>
     </tbody>
   </table>
 </div>
